@@ -1,6 +1,6 @@
 require "detail_parser/version"
 require "detail_parser/logger"
-# require 'detail_parser/configurable'
+require 'detail_parser/configurable'
 
 begin
   require "pry"
