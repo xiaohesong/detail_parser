@@ -1,6 +1,11 @@
 require "detail_parser/version"
 require "detail_parser/logger"
 
+begin
+  require "pry"
+rescue LoadError
+end
+
 module DetailParser
 
   puts "in detail_parser module"

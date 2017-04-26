@@ -7,6 +7,9 @@ class DetailParser::Railtie < Rails::Railtie
 
   puts " ====== in Rails railtile"
 
+  config.detail_parser = ActiveSupport::OrderedOptions.new
+  config.detail_parser.enabled = false
+
   # DetailParser::Logger.logger = Rails.application.config.logger || Rails.logger.presence
 
   initializer 'detail parser logger', after: :load_config_initializers do
