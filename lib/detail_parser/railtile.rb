@@ -1,7 +1,6 @@
 require 'rails/railtie'
 require 'action_view/log_subscriber'
 require 'action_controller/log_subscriber'
-require 'detail_parser/logger'
 
 class DetailParser::Railtile < Rails::Railtie
   env = Rails.env.to_sym || :development
@@ -14,6 +13,6 @@ class DetailParser::Railtile < Rails::Railtie
   end
 
   config.after_initialize do |app|
-    Logger.setup(app)
+    DetailParser.setup(app)
   end
 end
