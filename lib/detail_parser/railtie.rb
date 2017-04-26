@@ -2,8 +2,10 @@ require 'rails/railtie'
 require 'action_view/log_subscriber'
 require 'action_controller/log_subscriber'
 
-class DetailParser::Railtile < Rails::Railtie
+class DetailParser::Railtie < Rails::Railtie
   env = Rails.env.to_sym || :development
+
+  puts " ====== in Rails railtile"
 
   # DetailParser::Logger.logger = Rails.application.config.logger || Rails.logger.presence
 

@@ -2,9 +2,12 @@ require "detail_parser/version"
 require "detail_parser/logger"
 
 module DetailParser
+
+  puts "in detail_parser module"
   # Your code goes here...
   module_function
   def setup(app)
+    puts "detail_parser setup"
     self.application = app
 
     # attach_to_action_controller
