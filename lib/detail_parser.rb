@@ -29,7 +29,7 @@ module DetailParser
     attach_to_action_controller
     # set_lograge_log_options
     # support_deprecated_config
-    # set_formatter
+    set_formatter
     # set_ignores
     # Logger.setup
   end
@@ -45,11 +45,17 @@ module DetailParser
   end
 
   mattr_accessor :formatter
-
+  def set_formatter
+    DetailParser.formatter = detail_config.formatter || DetailParser::Formatters::Json.new
+  end
 
 
   def attach_to_action_controller
     DetailParser::LogSubscriber.attach_to :action_controller
+  end
+
+  def detail_config
+    application.config.detail_parser
   end
 
 end
