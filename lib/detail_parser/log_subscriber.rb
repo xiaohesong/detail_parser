@@ -43,8 +43,8 @@ module DetailParser
         format: extract_format(payload),
         controller: payload[:controller],
         action: payload[:action]
-      },
-      Parameters: payload[:params],
+      }
+      Parameters: payload[:params]
       Request_id: payload[:request]
       # "End Detail Parser Logger Info ========================================================================================="
     end
