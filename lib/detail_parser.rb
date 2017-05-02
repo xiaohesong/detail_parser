@@ -3,6 +3,10 @@ require "detail_parser/log_subscriber"
 require 'detail_parser/configurable'
 require 'detail_parser/railtie' if defined?(Rails)
 
+require 'active_support/core_ext/module/attribute_accessors'
+require 'active_support/core_ext/string/inflections'
+require 'active_support/ordered_options'
+
 begin
   require "pry"
 rescue LoadError

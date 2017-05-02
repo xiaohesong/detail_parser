@@ -1,3 +1,5 @@
+require 'json'
+require 'action_pack'
 require 'active_support/core_ext/class/attribute'
 require 'active_support/log_subscriber'
 
@@ -12,12 +14,6 @@ module DetailParser
       data = before_format(data, payload)
       formatted_message = DetailParser.formatter.call(data)
       # logger.send(Lograge.log_level, formatted_message)
-    end
-
-    def self.setup(app)
-      # self.application = app
-      # Lograge::RequestLogSubscriber.attach_to :action_controller
-      puts "NOTICE: Gem is ok"
     end
 
     private
