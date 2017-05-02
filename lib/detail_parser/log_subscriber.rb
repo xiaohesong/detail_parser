@@ -35,7 +35,7 @@ module DetailParser
     end
 
     def initial_data(payload)
-      "Start Detail Parser Logger Info ========================================================================================="
+      # "Start Detail Parser Logger Info ========================================================================================="
       {
         method: payload[:method],
         path: extract_path(payload),
@@ -44,7 +44,7 @@ module DetailParser
         action: payload[:action],
         parameters: payload[:parameters]
       }
-      "End Detail Parser Logger Info ========================================================================================="
+      # "End Detail Parser Logger Info ========================================================================================="
     end
 
     def extract_path(payload)
