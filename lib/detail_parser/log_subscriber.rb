@@ -28,6 +28,7 @@ module DetailParser
       puts "request2是#{payload[:headers][:request_id]}"
       puts "request是#{payload[:headers][:request_ip]}"
       puts "request是3#{payload[:headers][:remote_ip]}"
+      puts "444是#{payload[:headers]['X-Request-Id']}"
       data = initial_data(payload)
       data.merge!(extract_status(payload))
       data.merge!(extract_runtimes(event, payload))
