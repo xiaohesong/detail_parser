@@ -1,6 +1,7 @@
 require "detail_parser/version"
 require "detail_parser/logger"
 require 'detail_parser/configurable'
+require 'detail_parser/railtie' if defined?(Rails)
 
 begin
   require "pry"
