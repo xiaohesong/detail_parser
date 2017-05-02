@@ -26,7 +26,8 @@ module DetailParser
       payload = event.payload
       puts "现在的params是#{payload[:params]}"
       puts "request2是#{payload[:headers][:request_id]}"
-      puts "request是#{payload[:headers][:HTTP_X_REQUEST_ID]}"
+      puts "request是#{payload[:headers][:request_ip]}"
+      puts "request是3#{payload[:headers][:remote_ip]}"
       data = initial_data(payload)
       data.merge!(extract_status(payload))
       data.merge!(extract_runtimes(event, payload))
