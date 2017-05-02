@@ -2,6 +2,7 @@ require "detail_parser/version"
 require "detail_parser/log_subscriber"
 require 'detail_parser/configurable'
 require 'detail_parser/railtie' if defined?(Rails)
+require 'detail_parser/formatters/json'
 
 require 'active_support/core_ext/module/attribute_accessors'
 require 'active_support/core_ext/string/inflections'
