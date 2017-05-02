@@ -76,5 +76,10 @@ module DetailParser
       DetailParser.before_format(data, payload)
     end
 
+    def get_error_status_code(exception)
+      status = ActionDispatch::ExceptionWrapper.rescue_responses[exception]
+      Rack::Utils.status_code(status)
+    end
+
   end
 end
