@@ -13,8 +13,8 @@ class DetailParser::Railtie < Rails::Railtie
   # DetailParser::Logger.logger = Rails.application.config.logger || Rails.logger.presence
 
   initializer 'detail parser logger', after: :load_config_initializers do
-    DetailParser::Logger.logger = Rails.application.config.logger || Rails.logger.presence
-    DetailParser::Logger.filter = ActionDispatch::Http::ParameterFilter.new Rails.application.config.filter_parameters
+    DetailParser.logger = Rails.application.config.logger || Rails.logger.presence
+    DetailParser.filter = ActionDispatch::Http::ParameterFilter.new Rails.application.config.filter_parameters
   end
 
   config.after_initialize do |app|

@@ -10,6 +10,8 @@ end
 
 module DetailParser
 
+  attr_accessor :logger, :filter
+
   puts "in detail_parser module -- second"
   # Your code goes here...
   module_function
