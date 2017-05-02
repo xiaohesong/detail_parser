@@ -41,11 +41,11 @@ module DetailParser
         method: payload[:method],
         path: extract_path(payload),
         format: extract_format(payload),
-        controller: payload[:controller],
-        action: payload[:action]
+        Parameters: payload[:params],
+        Request_id: payload[:request]
+        # controller: payload[:controller],
+        # action: payload[:action]
       }
-      Parameters: payload[:params]
-      Request_id: payload[:request]
       # "End Detail Parser Logger Info ========================================================================================="
     end
 
