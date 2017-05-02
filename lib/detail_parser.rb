@@ -11,7 +11,7 @@ end
 module DetailParser
 
   class << self
-    attr_accessor :logger, :filter
+    attr_accessor :logger, :filter, :application
   end
 
   puts "in detail_parser module -- second"
@@ -20,10 +20,9 @@ module DetailParser
 
   def setup(app)
     puts "detail_parser setup, app　is #{app}"
-    LogSubscriber.setup(app)
-    # self.application = app
+    self.application = app
 
-    # attach_to_action_controller
+    attach_to_action_controller
     # set_lograge_log_options
     # support_deprecated_config
     # set_formatter
@@ -42,5 +41,11 @@ module DetailParser
   end
 
   mattr_accessor :formatter
+
+
+
+  def attach_to_action_controller
+    DetailParser::LogSubscriber.attach_to :action_controller
+  end
 
 end
