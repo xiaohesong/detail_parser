@@ -35,6 +35,8 @@ module DetailParser
     # Logger.setup
   end
 
+  mattr_accessor :log_level
+  self.log_level = :info
 
   mattr_writer :before_format
   self.before_format = nil

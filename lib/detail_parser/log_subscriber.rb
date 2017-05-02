@@ -14,7 +14,11 @@ module DetailParser
       data = extract_request(event, payload)
       data = before_format(data, payload)
       formatted_message = DetailParser.formatter.call(data)
-      # logger.send(Lograge.log_level, formatted_message)
+      logger.send(DetailParser.log_level, formatted_message)
+    end
+
+    def logger
+      DetailParser.logger.presence || super
     end
 
     private
