@@ -26,6 +26,7 @@ module DetailParser
       payload = event.payload
       puts "现在的payload是#{payload}"
       puts "现在的params是#{payload[:params]}"
+      puts "request是#{payload[:request_id]}"
       data = initial_data(payload)
       data.merge!(extract_status(payload))
       data.merge!(extract_runtimes(event, payload))
@@ -45,7 +46,6 @@ module DetailParser
       },
       Parameters: payload[:params],
       Request_id: payload[:request]
-      puts "request是#{payload[:request_id]}"
       # "End Detail Parser Logger Info ========================================================================================="
     end
 
