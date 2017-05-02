@@ -4,7 +4,7 @@ require 'active_support/log_subscriber'
 # require 'active_support/tagged_logging'
 
 module DetailParser
-  class Logger < ActiveSupport::LogSubscriber
+  class LogSubscriber < ActiveSupport::LogSubscriber
 
     def process_action(event)
       payload = event.payload
