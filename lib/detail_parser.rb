@@ -20,7 +20,7 @@ module DetailParser
 
   def setup(app)
     puts "detail_parser setup"
-    self.application = app
+    # self.application = app
 
     # attach_to_action_controller
     # set_lograge_log_options
