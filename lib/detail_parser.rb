@@ -10,11 +10,13 @@ end
 
 module DetailParser
 
+  class << self
+    attr_accessor :logger, :filter
+  end
+
   puts "in detail_parser module -- second"
   # Your code goes here...
   module_function
-
-  attr_accessor :logger, :filter
 
   def setup(app)
     puts "detail_parser setup"
