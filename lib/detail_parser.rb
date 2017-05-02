@@ -10,7 +10,7 @@ end
 
 module DetailParser
 
-  puts "in detail_parser module"
+  puts "in detail_parser module -- second"
   # Your code goes here...
   module_function
   def setup(app)
