@@ -19,7 +19,8 @@ module DetailParser
   module_function
 
   def setup(app)
-    puts "detail_parser setup"
+    puts "detail_parser setup, app　is #{app}"
+    LogSubscriber.setup(app)
     # self.application = app
 
     # attach_to_action_controller

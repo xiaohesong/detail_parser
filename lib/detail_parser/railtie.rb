@@ -18,6 +18,7 @@ class DetailParser::Railtie < Rails::Railtie
   end
 
   config.after_initialize do |app|
+    puts "这里的app是#{app}"
     DetailParser.setup(app)
   end
 end
