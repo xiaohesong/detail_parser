@@ -13,8 +13,8 @@ module DetailParser
       payload = event.payload
       data = extract_request(event, payload)
       data = before_format(data, payload)
-      formatted_message = DetailParser.formatter.call(data)
-      logger.send(DetailParser.log_level, formatted_message)
+      basic_message = DetailParser.formatter.call(data)
+      logger.send(DetailParser.log_level, basic_message)
     end
 
     def logger
@@ -24,9 +24,8 @@ module DetailParser
     private
     def extract_request(event, payload)
       payload = event.payload
-      puts "现在的payload是#{payload}"
       puts "现在的params是#{payload[:params]}"
-      puts "request是#{payload[:request_id]}"
+      puts "request是#{payload[:headers]}"
       data = initial_data(payload)
       data.merge!(extract_status(payload))
       data.merge!(extract_runtimes(event, payload))
@@ -42,7 +41,7 @@ module DetailParser
         path: extract_path(payload),
         format: extract_format(payload),
         Parameters: payload[:params],
-        Request_id: payload[:request]
+        headers: payload[:headers]
         # controller: payload[:controller],
         # action: payload[:action]
       }
