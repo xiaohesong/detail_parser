@@ -23,6 +23,7 @@ module DetailParser
 
     private
     def extract_request(event, payload)
+      puts "rails的方法里的event是#{event}, payload是#{payload}"
       payload = event.payload
       data = initial_data(payload)
       data.merge!(extract_status(payload))
