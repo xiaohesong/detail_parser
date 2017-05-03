@@ -24,7 +24,7 @@ module DetailParser
     private
     def extract_request(event, payload)
       payload = event.payload
-      puts "request是#{request}"
+      puts "request是#{env}"
       data = initial_data(payload)
       data.merge!(extract_status(payload))
       data.merge!(extract_runtimes(event, payload))
