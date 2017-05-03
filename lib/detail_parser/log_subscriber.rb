@@ -12,7 +12,6 @@ module DetailParser
     END_LOGGER_FLAT =   "=========================================================================================".freeze
 
     def process_action(event)
-      puts "When the log subscriber is used with process_action"
       payload = event.payload
       puts_sth(event, payload)
       request_data = extract_request(event, payload)
@@ -30,11 +29,6 @@ module DetailParser
 
     def response_log(data)
       logger.send(DetailParser.log_level, data)
-    end
-
-    def puts_sth(event, payload)
-      puts "ruby Thread Current#{Thread.current[:current_user]}"
-      puts "ENV['USERNAME']是#{ENV['USERNAME']}" if DetailParser.detail_config.user
     end
 
     def logger
