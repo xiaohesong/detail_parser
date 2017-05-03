@@ -33,7 +33,7 @@ module DetailParser
     end
 
     def puts_sth(event, payload)
-      puts "ruby Thread Current#{Thread.current}"
+      puts "ruby Thread Current#{Thread.current[:current_user]}"
     end
 
     def logger
