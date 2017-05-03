@@ -51,14 +51,12 @@ module DetailParser
     end
 
     def initial_data(payload)
-      # "Start Detail Parser Logger Info ========================================================================================="
       {
         method: payload[:method],
         path: extract_path(payload),
         format: extract_format(payload),
         Parameters: payload[:params]
       }
-      # "End Detail Parser Logger Info ========================================================================================="
     end
 
     def logged_ip
