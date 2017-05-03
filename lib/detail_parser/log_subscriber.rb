@@ -8,8 +8,8 @@ require 'active_support/log_subscriber'
 module DetailParser
   class LogSubscriber < ActiveSupport::LogSubscriber
 
-    START_LOGGER_FLAT = "Start Detail Parser Logger Info =========================================================================================".freeze
-    END_LOGGER_FLAT = "End Detail Parser Logger Info =========================================================================================".freeze
+    START_LOGGER_FLAT = "=========================================================================================".freeze
+    END_LOGGER_FLAT =   "=========================================================================================".freeze
 
     def process_action(event)
       puts "When the log subscriber is used with process_action"
@@ -96,8 +96,8 @@ module DetailParser
 
     def extract_runtimes(event, payload)
       data = { duration: event.duration.to_f.round(2) }
-      data[:view] = payload[:view_runtime].to_f.round(2) if payload.key?(:view_runtime)
-      data[:db] = payload[:db_runtime].to_f.round(2) if payload.key?(:db_runtime)
+      data[:Views] = payload[:view_runtime].to_f.round(2) if payload.key?(:view_runtime)
+      data[:DB] = payload[:db_runtime].to_f.round(2) if payload.key?(:db_runtime)
       data
     end
 
