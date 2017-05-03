@@ -13,8 +13,8 @@ module DetailParser
       payload = event.payload
       puts "event是#{event}" if DetailParser.detail_config.event
       puts "payload是#{payload}" if DetailParser.detail_config.payload
-      puts "payload的request id是#{payload[:request_id]}" if DetailParser.detail_parser.show_request
-      puts "application是#{DetailParser.application}" if DetailParser.detail_parser.pust_app
+      puts "payload的request id是#{payload[:request_id]}" if DetailParser.detail_config.show_request
+      puts "application是#{DetailParser.application}" if DetailParser.detail_config.pust_app
       data = extract_request(event, payload)
       data = before_format(data, payload)
       basic_message = DetailParser.formatter.call(data)
