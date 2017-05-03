@@ -15,16 +15,22 @@ module DetailParser
       puts "When the log subscriber is used with process_action"
       payload = event.payload
       puts_sth(event, payload)
-      data = extract_request(event, payload)
+      request_data = extract_request(event, payload)
+      response_data = extract_response(event, payload)
       # data = before_format(data, payload)
       basic_message = DetailParser.formatter.call(data)
-      to_log(data)
+      logger.send(DetailParser.log_level, START_LOGGER_FLAT)
+      request_log(request_data)
+      response_log(response_data)
+      logger.send(DetailParser.log_level, END_LOGGER_FLAT)
     end
 
-    def to_log(data)
-      logger.send(DetailParser.log_level, START_LOGGER_FLAT)
+    def request_log(data)
       logger.send(DetailParser.log_level, data)
-      logger.send(DetailParser.log_level, END_LOGGER_FLAT)
+    end
+
+    def response_log(data)
+      logger.send(DetailParser.log_level, data)
     end
 
     def puts_sth(event, payload)
@@ -48,6 +54,10 @@ module DetailParser
       # data.merge!(extract_location)
       # data.merge!(extract_unpermitted_params)
       # data.merge!(custom_options(event))
+    end
+
+    def extract_response(event, payload)
+      "Response is #{payload[:response].body}"
     end
 
     def initial_data(payload)
