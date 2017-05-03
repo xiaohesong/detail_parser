@@ -49,7 +49,8 @@ module DetailParser
 
 
   def attach_to_action_controller
-    DetailParser::LogSubscriber.attach_to :action_controller
+    # DetailParser::LogSubscriber.attach_to :action_controller
+    DetailParser::LogSubscriber.append_info_to_payload :action_controller
   end
 
   def detail_config
