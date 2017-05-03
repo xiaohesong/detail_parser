@@ -24,7 +24,7 @@ module DetailParser
     private
     def extract_request(event, payload)
       payload = event.payload
-      puts "event req id是#{event.uuid}"
+      puts "event req id是#{event.unique_id}"
       # puts "event runtime是#{payload[:headers]['X-Runtime']}"
       data = initial_data(payload)
       data.merge!(extract_status(payload))
