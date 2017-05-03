@@ -27,6 +27,7 @@ Next to config, To run
 That will create file in `config/initializers/detail_parser.rb`
 
 It Looks like
+
     ```ruby
       Rails.application.configure do
         config.detail_parser.enabled = true
@@ -64,6 +65,23 @@ It Looks like
 
 ## Usage
 
+  默认是开启detail_parser的模式，可以通过配置文件来关闭
+
+  ```ruby
+  config.detail_parser.enabled = false
+  ```
+
+  默认的日志等级是 `:info`,可以通过配置文件修改
+
+  ```ruby
+  DetailParser.log_level = :debug
+  ```
+
+  默认的请求用户是开启的，但是内容被注释了．这个可以根据自己项目的情况修改．使用的时候去除注释就可以．
+
+  ```ruby
+  payload[:current_user] = "User Id #{current_user.id} | User name #{current_user.name}"
+  ```
 
 
 ## Development
