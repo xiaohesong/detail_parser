@@ -9,9 +9,10 @@ module DetailParser
   class LogSubscriber < ActiveSupport::LogSubscriber
 
     def process_action(event)
-      puts "event.payload[:name]是#{event.name}"
       puts "When the log subscriber is used with process_action"
       payload = event.payload
+      puts "event是#{event}" if DetailParser.detail_config.event
+      puts "payload是#{payload}" if DetailParser.detail_config.payload
       data = extract_request(event, payload)
       data = before_format(data, payload)
       basic_message = DetailParser.formatter.call(data)
@@ -25,8 +26,6 @@ module DetailParser
     private
     def extract_request(event, payload)
       payload = event.payload
-      puts "event req id是#{payload['action_dispatch.request_id']}"
-      # puts "event runtime是#{payload[:headers]['X-Runtime']}"
       data = initial_data(payload)
       data.merge!(extract_status(payload))
       data.merge!(extract_runtimes(event, payload))
