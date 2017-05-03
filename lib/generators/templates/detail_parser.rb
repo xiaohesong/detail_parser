@@ -23,6 +23,7 @@ ActionController::Instrumentation.class_eval do
     ActiveSupport::Notifications.instrument("process_action.action_controller", raw_payload) do |payload|
       result = super
       payload[:status] = response.status
+      # payload[:current_user] = "User Id #{current_user.id} | User name #{current_user.name}"
       append_info_to_payload(payload)
       result
     end
