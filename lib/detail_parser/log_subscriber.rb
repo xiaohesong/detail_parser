@@ -15,6 +15,7 @@ module DetailParser
       puts "payload是#{payload}" if DetailParser.detail_config.payload
       puts "payload的request id是#{payload[:request_id]}" if DetailParser.detail_config.show_request
       puts "application是#{DetailParser.application}" if DetailParser.detail_config.pust_app
+      puts "env的输出是#{payload.instance_variable_get("@#{req}")}" if if DetailParser.detail_config.req
       data = extract_request(event, payload)
       data = before_format(data, payload)
       basic_message = DetailParser.formatter.call(data)
