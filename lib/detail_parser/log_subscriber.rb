@@ -15,6 +15,7 @@ module DetailParser
       payload = event.payload
       request_data = extract_request(event, payload)
       logger.send(DetailParser.log_level, START_LOGGER_FLAT)
+      start_log(extract_start_request(event, payload))
       request_log(request_data)
       response_log(extract_response(event, payload)) unless html_format?(payload)
       logger.send(DetailParser.log_level, END_LOGGER_FLAT)
@@ -25,6 +26,10 @@ module DetailParser
     end
 
     def response_log(data)
+      logger.send(DetailParser.log_level, data)
+    end
+
+    def start_log(data)
       logger.send(DetailParser.log_level, data)
     end
 
@@ -43,6 +48,14 @@ module DetailParser
 
     def extract_response(event, payload)
       "Response is #{payload[:response].body}"
+    end
+
+    def extract_start_request(event, payload)
+      "Started GET #{extract_path(payload)} for #{payload[:remote_ip]} at #{format_time}"
+    end
+
+    def format_time
+      Time.current.localtime
     end
 
     def initial_data(payload)
