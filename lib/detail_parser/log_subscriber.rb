@@ -9,6 +9,7 @@ module DetailParser
   class LogSubscriber < ActiveSupport::LogSubscriber
 
     def process_action(event)
+      puts "event.payload[:name]是#{event.payload[:name]}"
       puts "When the log subscriber is used with process_action"
       payload = event.payload
       data = extract_request(event, payload)
