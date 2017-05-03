@@ -29,6 +29,7 @@ That will create file in `config/initializers/detail_parser.rb`
 It Looks like
 
     ```ruby
+
     Rails.application.configure do
       config.detail_parser.enabled = true
       config.detail_parser.current_user = true
@@ -60,6 +61,7 @@ It Looks like
         end
       end
     end
+    
     ```
 
 ## Usage
