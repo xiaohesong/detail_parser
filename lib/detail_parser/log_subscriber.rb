@@ -40,9 +40,8 @@ module DetailParser
         method: payload[:method],
         path: extract_path(payload),
         format: extract_format(payload),
-        Parameters: payload[:params],
+        Parameters: payload[:params]
         # headers: payload[:headers][:remote_ip]
-        Ip: logged_ip
         # controller: payload[:controller],
         # action: payload[:action]
       }
