@@ -40,11 +40,16 @@ module DetailParser
         path: extract_path(payload),
         format: extract_format(payload),
         Parameters: payload[:params],
-        headers: payload[:headers][:remote_ip]
+        # headers: payload[:headers][:remote_ip]
+        Ip: logged_ip
         # controller: payload[:controller],
         # action: payload[:action]
       }
       # "End Detail Parser Logger Info ========================================================================================="
+    end
+
+    def logged_ip
+      Thread.current[:logged_ip]
     end
 
     def extract_path(payload)
