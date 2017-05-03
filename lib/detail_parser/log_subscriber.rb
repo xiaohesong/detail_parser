@@ -14,7 +14,7 @@ module DetailParser
       data = extract_request(event, payload)
       data = before_format(data, payload)
       basic_message = DetailParser.formatter.call(data)
-      logger.send(DetailParser.log_level, basic_message)
+      logger.send(DetailParser.log_level, data)
     end
 
     def logger
@@ -24,6 +24,7 @@ module DetailParser
     private
     def extract_request(event, payload)
       payload = event.payload
+      puts "event是#{event.request}"
       data = initial_data(payload)
       data.merge!(extract_status(payload))
       data.merge!(extract_runtimes(event, payload))
