@@ -111,7 +111,7 @@ module DetailParser
 
 
     def html_format?(payload)
-      payload[:format] == "html"
+      payload[:format].to_s == "html"
     end
 
   end
