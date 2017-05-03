@@ -38,7 +38,7 @@ module DetailParser
       data = initial_data(payload)
       data.merge!(extract_status(payload))
       data.merge!(extract_runtimes(event, payload))
-      data.merge!(extract_userinfo(payload)) if DetailParser.detail_config.current_user
+      data.merge!(extract_userinfo(payload))
       # data.merge!(extract_location)
       # data.merge!(extract_unpermitted_params)
       # data.merge!(custom_options(event))
@@ -91,7 +91,9 @@ module DetailParser
     end
 
     def extract_userinfo(payload)
-      {request_user: payload[:current_user]}
+      if DetailParser.detail_config.current_user
+        {request_user: payload[:current_user]}
+      end
     end
 
     def before_format(data, payload)
