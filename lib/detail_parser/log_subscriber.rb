@@ -91,9 +91,7 @@ module DetailParser
     end
 
     def extract_userinfo(payload)
-      if DetailParser.detail_config.current_user
-        {request_user: payload[:current_user]}
-      end
+      {request_user: payload[:current_user]} if DetailParser.detail_config.current_user
     end
 
     def before_format(data, payload)
