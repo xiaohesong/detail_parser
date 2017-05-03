@@ -24,7 +24,7 @@ module DetailParser
     private
     def extract_request(event, payload)
       payload = event.payload
-      puts "ip是#{payload}"
+      puts "ip是#{payload.req}"
       puts "event是#{payload[:headers]['X-Request-Id']}"
       data = initial_data(payload)
       data.merge!(extract_status(payload))
