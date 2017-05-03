@@ -20,7 +20,7 @@ module DetailParser
       # basic_message = DetailParser.formatter.call(data)
       logger.send(DetailParser.log_level, START_LOGGER_FLAT)
       request_log(request_data)
-      # response_log(extract_response(event, payload))
+      response_log(extract_response(event, payload)) unless html_format?(payload)
       logger.send(DetailParser.log_level, END_LOGGER_FLAT)
     end
 
@@ -107,6 +107,11 @@ module DetailParser
     def get_error_status_code(exception)
       status = ActionDispatch::ExceptionWrapper.rescue_responses[exception]
       Rack::Utils.status_code(status)
+    end
+
+
+    def html_format?(payload)
+      payload[:format] == "html"
     end
 
   end
