@@ -1,5 +1,6 @@
 Rails.application.configure do
   config.detail_parser.enabled = true
+  config.detail_parser.current_user = true
 end
 
 
