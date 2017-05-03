@@ -33,11 +33,7 @@ module DetailParser
     end
 
     def puts_sth(event, payload)
-      puts "event是#{event}" if DetailParser.detail_config.event
-      puts "payload是#{payload}" if DetailParser.detail_config.payload
-      puts "payload的request id是#{payload[:request_id]}" if DetailParser.detail_config.show_request
-      puts "application是#{DetailParser.application}" if DetailParser.detail_config.pust_app
-      puts "env的输出是#{payload[:request].uuid}" if DetailParser.detail_config.req
+      puts "ruby Thread Current#{Thread.current}"
     end
 
     def logger
