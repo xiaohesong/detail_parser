@@ -62,6 +62,7 @@ module DetailParser
     def initial_data(payload)
       {
         method: payload[:method],
+        request_id: payload[:request].uuid,
         path: extract_path(payload),
         format: extract_format(payload),
         Parameters: payload[:params]
