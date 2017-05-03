@@ -16,7 +16,7 @@ module DetailParser
       payload = event.payload
       puts_sth(event, payload)
       data = extract_request(event, payload)
-      data = before_format(data, payload)
+      # data = before_format(data, payload)
       basic_message = DetailParser.formatter.call(data)
       to_log(data)
     end
