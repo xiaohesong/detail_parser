@@ -7,6 +7,5 @@ RSpec.describe DetailParser do
 
   it "does something useful" do
     # expect(false).to eq(true)
-    puts "DetailParser.logger是#{DetailParser::Logger.logger}"
   end
 end

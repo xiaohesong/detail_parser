@@ -13,10 +13,7 @@ module DetailParser
 
     def process_action(event)
       payload = event.payload
-      puts_sth(event, payload)
       request_data = extract_request(event, payload)
-      # data = before_format(data, payload)
-      # basic_message = DetailParser.formatter.call(data)
       logger.send(DetailParser.log_level, START_LOGGER_FLAT)
       request_log(request_data)
       response_log(extract_response(event, payload)) unless html_format?(payload)

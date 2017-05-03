@@ -14,20 +14,13 @@ module DetailParser
     attr_accessor :logger, :filter, :application
   end
 
-  puts "in detail_parser module -- second"
   # Your code goes here...
   module_function
 
   def setup(app)
-    puts "detail_parser setup, app　is #{app}"
     self.application = app
-
     attach_to_action_controller
-    # set_lograge_log_options
-    # support_deprecated_config
     set_formatter
-    # set_ignores
-    # Logger.setup
   end
 
   mattr_accessor :log_level
