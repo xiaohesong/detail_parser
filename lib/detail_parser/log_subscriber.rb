@@ -16,12 +16,11 @@ module DetailParser
       payload = event.payload
       puts_sth(event, payload)
       request_data = extract_request(event, payload)
-      response_data = extract_response(event, payload)
       # data = before_format(data, payload)
       # basic_message = DetailParser.formatter.call(data)
       logger.send(DetailParser.log_level, START_LOGGER_FLAT)
       request_log(request_data)
-      response_log(response_data)
+      # response_log(extract_response(event, payload))
       logger.send(DetailParser.log_level, END_LOGGER_FLAT)
     end
 
