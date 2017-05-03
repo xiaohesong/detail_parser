@@ -34,6 +34,7 @@ module DetailParser
 
     def puts_sth(event, payload)
       puts "ruby Thread Current#{Thread.current[:current_user]}"
+      puts "ENV['USERNAME']是#{ENV['USERNAME']}" if DetailParser.detail_config.user
     end
 
     def logger
