@@ -91,7 +91,7 @@ module DetailParser
     end
 
     def extract_userinfo(payload)
-      request_user: payload[:current_user]
+      {request_user: payload[:current_user]}
     end
 
     def before_format(data, payload)
