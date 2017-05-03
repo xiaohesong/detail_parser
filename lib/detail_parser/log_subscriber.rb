@@ -65,7 +65,7 @@ module DetailParser
         request_id: payload[:request].uuid,
         path: extract_path(payload),
         format: extract_format(payload),
-        Parameters: payload[:params]
+        params: payload[:params]
       }
     end
 
