@@ -8,18 +8,31 @@ require 'active_support/log_subscriber'
 module DetailParser
   class LogSubscriber < ActiveSupport::LogSubscriber
 
+    START_LOGGER_FLAT = "Start Detail Parser Logger Info =========================================================================================".freeze
+    END_LOGGER_FLAT = "End Detail Parser Logger Info =========================================================================================".freeze
+
     def process_action(event)
       puts "When the log subscriber is used with process_action"
       payload = event.payload
+      puts_sth(event, payload)
+      data = extract_request(event, payload)
+      data = before_format(data, payload)
+      basic_message = DetailParser.formatter.call(data)
+      to_log(data)
+    end
+
+    def to_log(data)
+      logger.send(DetailParser.log_level, START_LOGGER_FLAT)
+      logger.send(DetailParser.log_level, data)
+      logger.send(DetailParser.log_level, END_LOGGER_FLAT)
+    end
+
+    def puts_sth(event, payload)
       puts "event是#{event}" if DetailParser.detail_config.event
       puts "payload是#{payload}" if DetailParser.detail_config.payload
       puts "payload的request id是#{payload[:request_id]}" if DetailParser.detail_config.show_request
       puts "application是#{DetailParser.application}" if DetailParser.detail_config.pust_app
       puts "env的输出是#{payload[:request].uuid}" if DetailParser.detail_config.req
-      data = extract_request(event, payload)
-      data = before_format(data, payload)
-      basic_message = DetailParser.formatter.call(data)
-      logger.send(DetailParser.log_level, data)
     end
 
     def logger
@@ -44,9 +57,6 @@ module DetailParser
         path: extract_path(payload),
         format: extract_format(payload),
         Parameters: payload[:params]
-        # headers: payload[:headers][:remote_ip]
-        # controller: payload[:controller],
-        # action: payload[:action]
       }
       # "End Detail Parser Logger Info ========================================================================================="
     end
