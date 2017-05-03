@@ -40,6 +40,7 @@ module DetailParser
         method: payload[:method],
         path: extract_path(payload),
         format: extract_format(payload),
+        request_id: payload.uuid,
         Parameters: payload[:params]
         # headers: payload[:headers][:remote_ip]
         # controller: payload[:controller],
