@@ -19,6 +19,8 @@ module DetailParser
 
   def setup(app)
     self.application = app
+    keep_original_log
+
     attach_to_action_controller
     set_formatter
   end
@@ -40,6 +42,20 @@ module DetailParser
     DetailParser.formatter = detail_config.formatter || DetailParser::Formatters::Json.new
   end
 
+  def keep_original_log
+    return if detail_config.keep_original_log
+    remove_existing_log_subscriptions
+  end
+
+  def remove_existing_log_subscriptions
+    ActiveSupport::LogSubscriber.log_subscribers.each do |subscriber|
+      case subscriber
+      when ActionController::LogSubscriber
+        unsubscribe(:action_controller, subscriber)
+      end
+    end
+  end
+  private_class_method :remove_existing_log_subscriptions?
 
   def attach_to_action_controller
     DetailParser::LogSubscriber.attach_to :action_controller
