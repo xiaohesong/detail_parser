@@ -51,11 +51,11 @@ module DetailParser
     ActiveSupport::LogSubscriber.log_subscribers.each do |subscriber|
       case subscriber
       when ActionView::LogSubscriber
-        unsubscribe(:action_view, subscriber)# if detail_config.disable_action_view
+        unsubscribe(:action_view, subscriber) if detail_config.disable_action_view
       when ActionController::LogSubscriber
-        unsubscribe(:action_controller, subscriber)# if detail_config.disable_action_controller
+        unsubscribe(:action_controller, subscriber) if detail_config.disable_action_controller
       when ActiveRecord::LogSubscriber
-        unsubscribe(:active_record, subscriber) #if detail_config.disable_active_record
+        unsubscribe(:active_record, subscriber) if detail_config.disable_active_record
       end
     end
   end
