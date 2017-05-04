@@ -51,7 +51,7 @@ module DetailParser
     end
 
     def extract_start_request(event, payload)
-      "Started #{payload[:method.upcase} #{extract_path(payload)} for #{payload[:remote_ip]} at #{format_time}"
+      "Started #{payload[:method} #{extract_path(payload)} for #{payload[:remote_ip]} at #{format_time}"
     end
 
     def format_time
