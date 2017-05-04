@@ -1,8 +1,10 @@
 Rails.application.configure do
   config.detail_parser.enabled = true
   config.detail_parser.current_user = true
+  config.detail_parser.disable_action_view = true
+  config.detail_parser.disable_action_controller = true
+  config.detail_parser.disable_active_record = true
 end
-
 
 ActionController::Instrumentation.class_eval do
   def process_action(*args)
