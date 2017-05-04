@@ -55,7 +55,7 @@ module DetailParser
       end
     end
   end
-  private_class_method :remove_existing_log_subscriptions?
+  private_class_method :remove_existing_log_subscriptions
 
   def attach_to_action_controller
     DetailParser::LogSubscriber.attach_to :action_controller
