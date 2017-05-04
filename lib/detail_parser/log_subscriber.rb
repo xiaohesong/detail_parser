@@ -8,17 +8,11 @@ require 'active_support/log_subscriber'
 module DetailParser
   class LogSubscriber < ActiveSupport::LogSubscriber
 
-    START_LOGGER_FLAT = "=========================================================================================".freeze
-    END_LOGGER_FLAT =   "=========================================================================================".freeze
-
     def process_action(event)
       payload = event.payload
       request_data = extract_request(event, payload)
-      logger.send(DetailParser.log_level, START_LOGGER_FLAT)
-      start_log(extract_start_request(event, payload))
       request_log(request_data)
       response_log(extract_response(event, payload)) unless html_format?(payload)
-      logger.send(DetailParser.log_level, END_LOGGER_FLAT)
     end
 
     def request_log(data)
@@ -48,10 +42,6 @@ module DetailParser
 
     def extract_response(event, payload)
       "Response is #{payload[:response].body}"
-    end
-
-    def extract_start_request(event, payload)
-      "Started #{payload[:method]} #{extract_path(payload)} for #{payload[:remote_ip]} at #{format_time}"
     end
 
     def format_time
