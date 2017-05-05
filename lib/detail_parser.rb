@@ -47,6 +47,7 @@ module DetailParser
     remove_existing_log_subscriptions
   end
 
+  # http://guides.rubyonrails.org/active_support_instrumentation.html
   def remove_existing_log_subscriptions
     ActiveSupport::LogSubscriber.log_subscribers.each do |subscriber|
       case subscriber
