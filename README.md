@@ -40,7 +40,15 @@ That will create file in `config/initializers/detail_parser.rb`
   DetailParser.log_level = :debug
   ```
 
-  - 默认是关闭了rails自身的Log输出，如需开启，需要进行如下配置
+  - 默认是关闭了rails自身的Log输出
+
+  ```ruby
+  config.detail_parser.disable_action_view = true #关闭view的log
+  config.detail_parser.disable_action_controller = true #关闭controller的log
+  config.detail_parser.disable_active_record = true #关闭sql的log
+  ```
+
+  如需恢复所有的默认log输出，需添加下面的配置
 
   ```ruby
   config.detail_parser.keep_original_log = true
